@@ -10,6 +10,8 @@ module.exports = {
     return database('friends').where('id', id).first();
   },
 
-  
+  delete(id){
+    return database('friends').where('id', id).del();
+  }
 
 }

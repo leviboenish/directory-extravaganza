@@ -20,6 +20,11 @@ app.get('/:id', (req,res,next) => {
   })
 })
 
+app.delete('/:id', (req,res,next) => {
+  queries.delete(req.params.id).then(() => {
+    res.status(200).json('deleted');
+  })
+})
 
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
