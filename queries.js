@@ -24,6 +24,12 @@ module.exports = {
       'prevOccupation': prevOccupation
     }
     ).returning('*').then(record => {record[0]})
+  },
+
+  create(friend){
+    return database('friends').insert(friend).returning('*').then(record => {
+      record[0];
+    });
   }
 
 }

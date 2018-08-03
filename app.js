@@ -30,6 +30,12 @@ app.put('/:id', (req,res,next) => {
   queries.update(req.params.id, req.body.firstName, req.body.lastName, req.body.photo, req.body.hometownLat, req.body.hometownLong, req.body.prevOccupation).then(updatedUser => res.json({updatedUser}));
 })
 
+app.post('/', (req,res,next) => {
+  queries.create(req.body).then((data) => {
+    res.status(201).json(req.body);
+  })
+})
+
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
 })
