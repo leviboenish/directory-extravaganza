@@ -14,6 +14,13 @@ app.get('/', (req, res, next) => {
   })
 })
 
+app.get('/:id', (req,res,next) => {
+  queries.getById(req.params.id).then((data) => {
+    res.json({data})
+  })
+})
+
+
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
 })
