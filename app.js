@@ -26,6 +26,10 @@ app.delete('/:id', (req,res,next) => {
   })
 })
 
+app.put('/:id', (req,res,next) => {
+  queries.update(req.params.id, req.body.firstName, req.body.lastName, req.body.photo, req.body.hometownLat, req.body.hometownLong, req.body.prevOccupation).then(updatedUser => res.json({updatedUser}));
+})
+
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
 })
