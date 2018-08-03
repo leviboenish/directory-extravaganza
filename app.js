@@ -1,9 +1,17 @@
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 8000;
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const queries = require('./queries')
+
+app.use(cors());
+app.use(bodyParser.json())
 
 app.get('/', (req, res, next) => {
-  res.json('test')
+  queries.getAll().then((data) => {
+    res.json({data})
+  })
 })
 
 app.listen(port, () => {
